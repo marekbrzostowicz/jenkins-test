@@ -1,17 +1,22 @@
 pipeline {
-    agent any
+    agent any 
+
     stages {
-        stage('Pobranie z Gita') {
+        stage('pobranie kodu'){
             steps {
-                // To sie wyswietli, jak Jenkins pobierze kod
-                bat 'echo Udalo sie pobrac kod z GitHuba!'
+                powershell 'Get-ChildItems'
             }
         }
-        stage('Sprawdzenie plikow') {
+
+        stage ('Testy'){
             steps {
-                // Zobaczymy, czy Jenkins widzi Jenkinsfile
-                bat 'dir'
+                powershell ''' Invoke-Pester -Path .\\Math.Tests.ps1 -OutputFile "wyniki,xml" -OutputFormat NUnitXml '''
             }
+        }
+    }
+    post {
+        always {
+            junit 'wyniki.xml'
         }
     }
 }
