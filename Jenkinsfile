@@ -44,10 +44,9 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Teraz mamy pewnosc, ze czytamy swiezy plik
-            junit 'wyniki.xml'
-        }
-    }
+    // post {
+    //     always {
+    //         junit 'wyniki.xml'
+    //     }
+    // }
 }
