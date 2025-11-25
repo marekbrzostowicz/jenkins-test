@@ -1,24 +1,27 @@
 pipeline {
-    agent any 
+    agent any
 
     stages {
-        stage('pobranie kodu'){
+        stage('Pobranie Kodu') {
             steps {
-
-                bat 'echo Udalo sie pobrac kod z GitHuba!'
+                powershell 'ls'
             }
         }
 
-        stage ('Testy'){
+        stage('Testy (Pester)') {
             steps {
-
-                bat 'dir'
+                powershell '''
+                    Invoke-Pester -Path ".\\Math.Tests.ps1" -OutputFile "wyniki.xml" -OutputFormat NUnitXml
+                '''
             }
         }
     }
+
     post {
         always {
+
             junit 'wyniki.xml'
+            
         }
     }
 }
