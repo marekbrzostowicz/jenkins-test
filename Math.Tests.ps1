@@ -16,7 +16,7 @@ Describe "Test dodawania" {
     }
 
     It "zero" {
-        $wynik = Add-Numbers -4 -4
+        $wynik = Add-Numbers -4 4
         $wynik | Should -Be 0
     }
 }
