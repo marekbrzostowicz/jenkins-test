@@ -11,7 +11,16 @@ pipeline {
         stage('Testy (Pester)') {
             steps {
                 powershell '''
-                    Invoke-Pester -Path ".\\Math.Tests.ps1" -OutputFile "wyniki.xml" -OutputFormat NUnitXml
+                    $config = New-PesterConfiguration
+
+                    $config.Run.Path = ".\\Math.Tests.ps1"
+
+                    $config.TestResult.Enabled = $true
+                    $config.TestResult.OutputFormat = "NUnitXml"
+                    $config.TestResult.OutputPath = "wyniki.xml"
+
+                    Invoke-Pester -Configuration $config
+
                 '''
             }
         }
