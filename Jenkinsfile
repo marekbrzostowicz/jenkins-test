@@ -44,9 +44,9 @@ pipeline {
         }
     }
 
-    // post {
-    //     always {
-    //         junit 'wyniki.xml'
-    //     }
-    // }
+    post {
+        always {
+            junit 'wyniki.xml'
+        }
+    }
 }
