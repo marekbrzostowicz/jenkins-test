@@ -50,7 +50,6 @@ pipeline {
 
     post {
         always {
-            # Gwiazdka znajdzie kazdy xml, nawet jak pomylisz nazwy
             junit '*.xml'
         }
     }
