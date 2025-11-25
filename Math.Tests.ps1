@@ -12,6 +12,11 @@ Describe "Test dodawania" {
 
     It "Oblusga liczb ujemnych" {
         $wynik = Add-Numbers 0 -4
-        $wynik | Should -Be -7
+        $wynik | Should -Be -4
+    }
+
+    It "zero" {
+        $wynik = Add-Numbers -4 -4
+        $wynik | Should -Be 0
     }
 }
