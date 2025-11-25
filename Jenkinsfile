@@ -4,13 +4,15 @@ pipeline {
     stages {
         stage('pobranie kodu'){
             steps {
-                powershell 'Get-ChildItems'
+
+                bat 'echo Udalo sie pobrac kod z GitHuba!'
             }
         }
 
         stage ('Testy'){
             steps {
-                powershell ''' Invoke-Pester -Path .\\Math.Tests.ps1 -OutputFile "wyniki,xml" -OutputFormat NUnitXml '''
+
+                bat 'dir'
             }
         }
     }
